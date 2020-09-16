@@ -2,10 +2,17 @@
 import time
 import RPi.GPIO as GPIO
 
-setwarnings(False)
+GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
-GPIO.output(4, True)
-time.sleep(1)
-GPIO.output(4, False)
+
+blink = 0 
+while (blink < 25):
+    GPIO.output(4, True)
+    time.sleep(0.1)
+    GPIO.output(4, False)
+    time.sleep(0.1)
+    blink = blink + 1
+    print('Led Blink:', blink)
+print('End.')
